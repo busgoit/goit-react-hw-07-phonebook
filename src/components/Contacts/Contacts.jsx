@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/store';
+import { deleteContacts } from 'redux/operations';
+import { selectContacts, selectFilter } from 'redux/selectors';
 import { TiDeleteOutline } from 'react-icons/ti';
 import {
   ContactsList,
@@ -11,21 +12,19 @@ import {
 } from './Contacts.styled';
 
 const Contacts = () => {
-  const contacts = useSelector(state => state.contacts.items);
-  const filter = useSelector(state => state.filter);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
 
   const getFilteredContacts = () => {
-    const normalisedFilter = filter.toLowerCase().trim();
-
     return [...contacts].filter(contact =>
-      contact.name.toLowerCase().includes(normalisedFilter)
+      contact.name.toLowerCase().includes(filter)
     );
   };
 
   const filteredContacts = getFilteredContacts();
 
-  const onBtnClick = id => dispatch(deleteContact(id));
+  const onBtnClick = id => dispatch(deleteContacts(id));
 
   return (
     <>

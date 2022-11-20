@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/store';
+import { addContacts } from 'redux/operations';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { StyledForm, FormLabel, FormInput, SubmitButton } from './Form.styled';
@@ -20,7 +20,7 @@ export const Form = () => {
 
   const onFormSubmitHandle = e => {
     e.preventDefault();
-    dispatch(addContact({ name, number }));
+    dispatch(addContacts({ name, number }));
     resetForm();
   };
 
