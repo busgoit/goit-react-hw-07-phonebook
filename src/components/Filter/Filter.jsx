@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { filteredContacts } from 'redux/filterSlice';
+import { setFilter } from 'redux/filterSlice';
 import { selectFilter } from 'redux/selectors';
 import { nanoid } from 'nanoid';
 import { StyledFilter, FilterLabel, FilterInput } from './Filter.styled';
@@ -11,7 +11,7 @@ const Filter = () => {
   const dispatch = useDispatch();
 
   const onFilterChange = e =>
-    dispatch(filteredContacts(e.currentTarget.value.toLowerCase().trim()));
+    dispatch(setFilter(e.currentTarget.value.toLowerCase().trim()));
 
   return (
     <StyledFilter>
