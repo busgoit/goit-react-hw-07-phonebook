@@ -14,6 +14,7 @@ import {
 const Contacts = () => {
   const contacts = useSelector(selectContacts);
   const filter = useSelector(selectFilter);
+
   const dispatch = useDispatch();
 
   const getFilteredContacts = () => {
